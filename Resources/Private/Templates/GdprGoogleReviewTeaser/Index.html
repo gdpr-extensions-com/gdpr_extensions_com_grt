@@ -1,0 +1,109 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+{namespace
+my=GdprExtensionsCom\GdprExtensionsComGrt\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Default"/>
+<f:section name="content">
+    <f:asset.css identifier="reviewcss" href="EXT:gdpr_extensions_com_grt/Resources/Public/Css/review.css"/>
+    <style type="text/css">
+        /* for widget*/
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .review-container {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .review {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .review h2 {
+            margin: 0;
+        }
+
+        .date {
+            color: #666;
+        }
+
+        .rating {
+            color: #FFD700; /* Gold color for stars */
+        }
+
+        .comment {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .source {
+            text-align: right;
+            color: #666;
+        }
+
+        .load-more-btn {
+            display: block;
+            width: 200px;
+            padding: 10px 20px;
+            margin: 20px auto;
+            background-color: orange;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .load-more-btn:hover {
+            background-color: #e69500;
+        }
+
+    </style>
+    <div class="review-ext">
+        <div class="review-bg" style="background-color: {data.gdpr_background_color_teaser};">
+            <div class="container">
+                <div class="review-page">
+                    <span class="d-none border-color"><f:format.raw>{data.gdpr_color_of_border_teaser}</f:format.raw></span>
+                    <span class="d-none bg-container-color"><f:format.raw>{data.gdpr_background_color_teaser}</f:format.raw></span>
+                    <span class="d-none review-txt-color"><f:format.raw>{data.gdpr_color_of_text_teaser}</f:format.raw></span>
+                    <div class="review-page__content">
+                        <div id="reviews-list" class="review-container">
+                            <div class="review" style="border-color: {data.gdpr_color_of_border_teaser}; background-color: {data.gdpr_background_color_teaser}">
+                                <div class="review__user">
+                                    <f:if condition="{review.reviewer_profile_photo_url}">
+                                        <div class="review__user-img">
+                                            <img src="{review.reviewer_profile_photo_url}" alt="{data.gdpr_alt_text}"></img>
+                                        </div>
+                                    </f:if>
+
+                                    <p class="review__user-name" style="font-weight: bold; margin-bottom: 7px; color: {data.gdpr_color_of_text_teaser}">{review.reviewer_display_name}</p>
+                                    <p class="review__user-date" style="color: {data.gdpr_color_of_text_teaser}">{review.create_time}</p></div>
+                                <div class="review__content">
+                                    <div class="review__rating">
+                                        <div class="review__starParent">
+                                            <f:render partial="Stars" arguments="{stars:review.star_rating}" />
+                                        </div>
+                                    </div>
+                                    <p class="review__text" style="color: {data.gdpr_color_of_text_teaser}">{review.comment}</p>
+                                    <p class="review__source" style="color: {data.gdpr_color_of_text_teaser}">Quelle: {review.source}</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="star">
+            </div>
+        </div>
+    </div>
+
+
+</f:section>
+
+</html>

@@ -1,0 +1,109 @@
+plugin.tx_gdprextensionscomgrt_googlereviewteaser {
+    view {
+        templateRootPaths.0 = EXT:gdpr_extensions_com_grt/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_gdprextensionscomgrt_googlereviewteaser.view.templateRootPath}
+        partialRootPaths.0 = EXT:gdpr_extensions_com_grt/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_gdprextensionscomgrt_googlereviewteaser.view.partialRootPath}
+        layoutRootPaths.0 = EXT:gdpr_extensions_com_grt/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_gdprextensionscomgrt_googlereviewteaser.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_gdprextensionscomgrt_googlereviewteaser.persistence.storagePid}
+        #recursive = 1
+    }
+    features {
+        #skipDefaultArguments = 1
+        # if set to 1, the enable fields are ignored in BE context
+        ignoreAllEnableFieldsInBe = 0
+    }
+    mvc {
+        callDefaultActionIfActionCantBeResolved = 1
+    }
+}
+
+plugin.tx_gdprextensionscomgrt_gdprcookiewidget {
+    view {
+        templateRootPaths.0 = EXT:gdpr_extensions_com_grt/Resources/Private/Templates/
+
+    }
+    persistence {
+
+    }
+    features {
+
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+}
+
+#page = PAGE
+#page.999 < tt_content.list.20.gdprextensionscomgrt_gdprcookiewidget
+
+
+config.tx_extbase {
+    persistence {
+        classes {
+            GdprExtensionsCom\gdprextensionscomgrt\Domain\Model\GdprManager {
+                mapping {
+                    tableName = tx_gdprextensionscomyoutube_domain_model_gdprmanager
+                }
+            }
+
+            GdprExtensionsCom\gdprextensionscomgrt\Domain\Model\MapLocation {
+                mapping {
+                    tableName = tx_gdprextensionscomgooglemap_domain_model_maplocation
+                }
+            }
+        }
+    }
+}
+
+# these classes are only used in auto-generated templates
+plugin.tx_gdprextensionscomgrt._CSS_DEFAULT_STYLE (
+    textarea.f3-form-error {
+        background-color: #FF9F9F;
+        border: 1px #FF0000 solid;
+    }
+
+    input.f3-form-error {
+        background-color: #FF9F9F;
+        border: 1px #FF0000 solid;
+    }
+
+    .tx-gdpr-extensions-com-google_reviewlist table {
+        border-collapse: separate;
+        border-spacing: 10px;
+    }
+
+    .tx-gdpr-extensions-com-google_reviewlist table th {
+        font-weight: bold;
+    }
+
+    .tx-gdpr-extensions-com-google_reviewlist table td {
+        vertical-align: top;
+    }
+
+    .typo3-messages .message-error {
+        color: red;
+    }
+
+    .typo3-messages .message-ok {
+        color: green;
+    }
+)
+
+# Module configuration
+module.tx_gdprextensionscomgrt {
+    persistence {
+        storagePid = {$module.tx_gdprextensionscomgrt_gdprmanager.persistence.storagePid}
+    }
+    view {
+        templateRootPaths.0 = EXT:gdpr_extensions_com_grt/Resources/Private/Backend/Templates/
+        templateRootPaths.1 = {$module.tx_gdprextensionscomgrt_gdprmanager.view.templateRootPath}
+        partialRootPaths.0 = EXT:gdpr_extensions_com_grt/Resources/Private/Backend/Partials/
+        partialRootPaths.1 = {$module.tx_gdprextensionscomgrt_gdprmanager.view.partialRootPath}
+        layoutRootPaths.0 = EXT:gdpr_extensions_com_grt/Resources/Private/Backend/Layouts/
+        layoutRootPaths.1 = {$module.tx_gdprextensionscomyoutube_gdprmanager.view.layoutRootPath}
+    }
+}
